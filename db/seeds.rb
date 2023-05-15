@@ -7,8 +7,8 @@ end
 u2 = User.last
 c = Chatroom.create
 
-u1.messages << Message.create(body: "Opa, primeira")
-u2.messages << Message.create(body: "Opa, segunda")
+u1.messages << Message.create(body: "Hi, First Message")
+u2.messages << Message.create(body: "Hi, Second Message")
 
 c.messages << u1.messages.first
 c.messages << u2.messages.first
