@@ -1,0 +1,7 @@
+<div class="row" >
+  <div class="chat-@message <%= "right" if @message.user_id == session[:user_id] %>">
+    <p>User Id:<%= @message.user_id %></p>
+    <p>CurrentUser: <%= session[:user_id] %></p>
+    <p><%= @message.body %></p>
+  </div>
+</div>

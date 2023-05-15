@@ -1,0 +1,12 @@
+<%= turbo_stream_from "chatrooms" %>
+<h4 class="center">
+  <%= tag.i("coffee", class: "material-icons medium") %>
+  <br>
+  Say Something!
+</h4>
+
+<div id="chat-main" class="row">
+  <%= render "chatrooms" %>
+  <%= render "current_chat" %>
+</div>
+

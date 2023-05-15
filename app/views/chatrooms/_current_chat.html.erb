@@ -1,0 +1,39 @@
+<div class="chat-box col s12 m12 l8 z-depth-2" id="current_chat" data-controller="current-chat">
+  <div class="chat-container">
+    <%= turbo_stream_from @current_chat %>
+
+    <% if @current_chat.present? %>
+      <%
+      unless @current_chat.group?
+        user = (@current_chat.users - [@current_user]).first
+        @current_chat.title = user.name
+      end
+      %>
+      <div class="row chat-header">
+        <%= @current_chat.title %>
+      </div>
+      <div class="row chat-content" data-current-chat-target="chatContent">
+        <div class="progress">
+          <div class="indeterminate"></div>
+        </div>
+        <div class="col s12 m12 l12 chat-messages">
+          <div id=<%= "chatroom_messages_#{@current_chat.id}" %> data-current-chat-target="chatMessages">
+            <%= render @current_chat.messages %>
+          </div>
+        </div>
+      </div>
+      <button 
+        class="btn-floating btn-small waves-effect waves-light red scroll-bottom"
+        data-current-chat-target="scrollButton"
+        data-action="click->current-chat#scrollBottom">
+        <i class="material-icons">keyboard_arrow_down</i>
+      </button>
+
+      <div class="row chat-footer valign-wrapper">
+        <%= render partial: "messages/partials/form", locals: { message: @message } %>
+      </div>
+    <% else %>
+      <div class="row center"><span>Select a chat and start Messaging :)</span></div>
+    <% end %>
+  </div>
+</div>

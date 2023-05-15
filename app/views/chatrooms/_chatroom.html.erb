@@ -1,0 +1,15 @@
+<%= link_to chatroom_path(chatroom), data: {turbo_stream: true}, class: "collection-item avatar" do %>
+  <%= image_tag avatar_url_for, class: "circle" %>
+  <%
+    unless chatroom.group?
+      user = (chatroom.users - [@current_user]).first
+      chatroom.title = user.name
+    end
+  %>
+
+  <span class="title">
+  <%= chatroom.title %></span>
+  <br>
+  <span>sadfiuhdsaf</span>
+  <span class="new badge green lighten-2">4</span>Alan</a>
+<% end %>

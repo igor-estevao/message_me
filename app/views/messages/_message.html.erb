@@ -1,0 +1,12 @@
+<div  id="<%= message.id %>"
+      data-controller="message"
+      data-current="<%= message.created_by_current_user %>"
+      class="row" >
+
+  <div class="chat-message <%= "right" if message.user_id == session[:user_id] %>" data-message-target="message">
+    <p>User Id:<%= message.user_id %></p>
+    <p>CurrentUser: <%= session[:user_id] %></p>
+    <p><%= message.body %></p>
+    <%= message.created_at %>
+  </div>
+</div>
